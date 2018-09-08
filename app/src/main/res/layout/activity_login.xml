@@ -41,22 +41,26 @@
         <Button
             android:id="@+id/signIn"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:background="@color/signin_button_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_margin="10px"
+            android:background="@color/signin_button_color"
+            android:onClick="signinUser"
             android:text="@string/sign_in"
-            android:layout_margin="10px"/>
+            tools:ignore="OnClick" />
 
         <Button
             android:id="@+id/signUp"
-            android:layout_margin="10px"
             style="@style/Widget.AppCompat.Button.Colored"
-            android:background="@color/signup_button_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="@string/sign_up" />
+            android:layout_margin="10px"
+            android:background="@color/signup_button_color"
+            android:onClick="ragisterNewUser"
+            android:text="@string/sign_up"
+            tools:ignore="OnClick" />
     </LinearLayout>
 
 
