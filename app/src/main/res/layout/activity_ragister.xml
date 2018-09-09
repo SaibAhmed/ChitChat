@@ -17,37 +17,44 @@
         android:gravity="center_vertical"
         android:padding="20px">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/login"
+            android:layout_gravity="center"
+            android:padding="20dp"/>
+
         <AutoCompleteTextView
             android:id="@+id/username_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Your Username"
             android:textColorHint="@color/white"
-            android:layout_margin="10px"/>
+            android:layout_margin="10dp"/>
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/email_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
             android:textColorHint="@color/white"
-            android:layout_margin="10px"/>
+            android:layout_margin="10dp"/>
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/pass_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:textColorHint="@color/white"
-            android:layout_margin="10px"/>
+            android:layout_margin="10dp"/>
 
-        <AutoCompleteTextView
+        <EditText
             android:id="@+id/confirmPass_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
             android:textColorHint="@color/white"
-            android:layout_margin="10px"/>
+            android:layout_margin="10dp"/>
 
         <Button
             android:layout_marginTop="20px"

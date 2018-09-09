@@ -4,5 +4,9 @@
     <string name="pass_email">Password</string>
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
+    <string name="invalid_email">your Email is invalid</string>
+    <string name="invalid_password">your password is too short</string>
+    <string name="incorrect_password">your password is not correct</string>
+    <string name="field_required">Please fill the fields</string>
 
 </resources>
