@@ -46,7 +46,8 @@
             android:layout_height="wrap_content"
             android:hint="Password"
             android:textColorHint="@color/white"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:password="true"/>
 
         <EditText
             android:id="@+id/confirmPass_editText"
@@ -54,7 +55,8 @@
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
             android:textColorHint="@color/white"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:password="true"/>
 
         <Button
             android:layout_marginTop="20px"
@@ -62,7 +64,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/sign_up" />
+            android:text="@string/sign_up"
+            android:onClick="signUp"
+            tools:ignore="OnClick" />
 
     </LinearLayout>
 
