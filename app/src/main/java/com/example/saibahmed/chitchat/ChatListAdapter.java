@@ -55,6 +55,9 @@ public class ChatListAdapter extends BaseAdapter {
          myDatabaseRef=ref.child("chats");
          myUserName=name;
          mySnapShot = new ArrayList<>();
+
+         //add listener
+        myDatabaseRef.addChildEventListener(myListener);
     }
 
 
