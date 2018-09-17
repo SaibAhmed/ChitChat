@@ -1,10 +1,29 @@
 package com.example.saibahmed.chitchat;
 
+import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+
+import java.util.ArrayList;
+
 public class ChatListAdapter extends BaseAdapter {
+
+    private Activity myActivity;
+    private DatabaseReference myDatabaseRef;
+    private String myUserName;
+    private ArrayList<DataSnapshot> mySnapShot;
+
+
+
+
+
+
+
+
 
 
     @Override
