@@ -104,6 +104,23 @@ public class ChatListAdapter extends BaseAdapter {
             view.setTag(holder);
         }
 
+        final InstantMessage message = getItem(i);
+        final ViewHolder holder = (ViewHolder) view.getTag();
+
+        //styling
+        boolean isMe = message.getAuthor().equals(myUserName);
+        //call a function for styling
+
+
+
+
+        String author=message.getAuthor();
+        holder.senderName.setText(author);
+
+        String msg = message.getMessage();
+        holder.chatBody.setText(msg);
+
+
 
         return view;
     }
