@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -60,6 +62,13 @@ public class ChatListAdapter extends BaseAdapter {
         myDatabaseRef.addChildEventListener(myListener);
     }
 
+    //static class
+    static class ViewHolder{
+        TextView senderName;
+        TextView chatBody;
+        LinearLayout.LayoutParams layoutParams;
+
+    }
 
 
     @Override
