@@ -77,8 +77,11 @@ public class ChatListAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int i) {
-        return null;
+    public InstantMessage getItem(int i) {
+
+        DataSnapshot snapshot = mySnapShot.get(i);
+        return  snapshot.getValue(InstantMessage.class);
+         
     }
 
     @Override
