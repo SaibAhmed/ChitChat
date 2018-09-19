@@ -1,6 +1,8 @@
 package com.example.saibahmed.chitchat;
 
 import android.app.Activity;
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -81,7 +83,7 @@ public class ChatListAdapter extends BaseAdapter {
 
         DataSnapshot snapshot = mySnapShot.get(i);
         return  snapshot.getValue(InstantMessage.class);
-         
+
     }
 
     @Override
@@ -91,6 +93,18 @@ public class ChatListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+
+        if (view == null){
+            LayoutInflater inflater = (LayoutInflater) myActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.chat_message_row,viewGroup,false);
+            final ViewHolder holder = new ViewHolder();
+            holder.senderName = (TextView) view.findViewById(R.id.author);
+            holder.chatBody = (TextView) view.findViewById(R.id.message);
+            holder.layoutParams=(LinearLayout.LayoutParams)holder.senderName.getLayoutParams();
+            view.setTag(holder);
+        }
+
+
+        return view;
     }
 }
