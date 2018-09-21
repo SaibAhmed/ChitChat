@@ -112,6 +112,7 @@ public class ChatListAdapter extends BaseAdapter {
         //styling
         boolean isMe = message.getAuthor().equals(myUserName);
         //call a function for styling
+        chatRowStyling(isMe,holder);
 
 
 
@@ -133,6 +134,15 @@ public class ChatListAdapter extends BaseAdapter {
             holder.senderName.setTextColor(Color.BLACK);
             holder.chatBody.setBackgroundResource(R.drawable.message_image);
 
+        }else{
+            holder.layoutParams.gravity = Gravity.START;
+            holder.senderName.setTextColor(Color.BLACK);
+            holder.chatBody.setBackgroundResource(R.drawable.message_image2);
         }
+
+    }
+
+    public void freeUpResources(){
+        myDatabaseRef.removeEventListener(myListener);
     }
 }
