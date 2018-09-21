@@ -124,4 +124,8 @@ public class ChatListAdapter extends BaseAdapter {
 
         return view;
     }
+
+    private void chatRowStyling(boolean isItme, ViewHolder holder){
+        
+    }
 }
