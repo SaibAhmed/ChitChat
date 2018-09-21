@@ -2,6 +2,8 @@ package com.example.saibahmed.chitchat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -126,6 +128,9 @@ public class ChatListAdapter extends BaseAdapter {
     }
 
     private void chatRowStyling(boolean isItme, ViewHolder holder){
-        
+        if (isItme){
+            holder.layoutParams.gravity = Gravity.END;
+            holder.senderName.setTextColor(Color.BLACK);
+        }
     }
 }
