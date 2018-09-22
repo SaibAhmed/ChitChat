@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:dividerHeight="0dp"
+        android:divider="@null"
         android:transcriptMode="alwaysScroll"
         android:layout_alignParentTop="true"
         android:layout_above="@id/listFooter">
