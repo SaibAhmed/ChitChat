@@ -132,6 +132,7 @@ public class ChatListAdapter extends BaseAdapter {
         if (isItme){
             holder.layoutParams.gravity = Gravity.END;
             holder.senderName.setTextColor(Color.BLACK);
+            holder.chatBody.setTextColor(Color.WHITE);
             holder.chatBody.setBackgroundResource(R.drawable.message_image);
 
         }else{
@@ -139,6 +140,10 @@ public class ChatListAdapter extends BaseAdapter {
             holder.senderName.setTextColor(Color.BLACK);
             holder.chatBody.setBackgroundResource(R.drawable.message_image2);
         }
+
+        holder.senderName.setLayoutParams(holder.layoutParams);
+        holder.chatBody.setLayoutParams(holder.layoutParams);
+
 
     }
 
