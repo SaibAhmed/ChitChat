@@ -21,7 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RagisterActivity" />
-        <activity android:name=".MainChatActivity"></activity>
+        <activity android:name=".MainChatActivity" />
+        <activity android:name=".main_activity"></activity>
     </application>
 
 </manifest>
