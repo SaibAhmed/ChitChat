@@ -116,10 +116,11 @@ public class ChatListAdapter extends BaseAdapter {
 
 
 
-
+        //showing author name in chat
         String author=message.getAuthor();
         holder.senderName.setText(author);
 
+        //showing msgs in chat
         String msg = message.getMessage();
         holder.chatBody.setText(msg);
 
@@ -138,6 +139,7 @@ public class ChatListAdapter extends BaseAdapter {
         }else{
             holder.layoutParams.gravity = Gravity.START;
             holder.senderName.setTextColor(Color.BLACK);
+            holder.chatBody.setTextColor(Color.BLACK);
             holder.chatBody.setBackgroundResource(R.drawable.message_image2);
         }
 
