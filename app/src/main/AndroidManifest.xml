@@ -23,7 +23,10 @@
         <activity android:name=".RagisterActivity" />
         <activity android:name=".MainChatActivity" />
         <activity android:name=".main_activity" />
-        <activity android:name=".SettingsActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".StatusActivity"
+            android:parentActivityName=".SettingsActivity">
+        </activity>
     </application>
 
 </manifest>
