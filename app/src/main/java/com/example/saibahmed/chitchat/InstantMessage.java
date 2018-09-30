@@ -5,10 +5,10 @@ public class InstantMessage {
     private String author;
     private String message;
 
-    public InstantMessage(String author, String message) {
+    public InstantMessage(String message, String author) {
 
-        this.author = author;
-        this.message = message;
+        this.author=author;
+        this.message=message;
     }
 
     //optional
