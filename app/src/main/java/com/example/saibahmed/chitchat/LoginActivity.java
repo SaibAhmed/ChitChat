@@ -1,28 +1,36 @@
 package com.example.saibahmed.chitchat;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
     //Ref to firebase
     private FirebaseAuth myAuth;
+    private Toolbar mToolbar;
+    private ProgressDialog mRegProgress;
 
     //UI refs
-    private EditText myEmail;
-    private EditText myPassword;
+    private TextInputEditText myEmail;
+    private TextInputEditText myPassword;
     View focusView = null;
 
 
@@ -31,24 +39,66 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //setting appbar
+        mToolbar =findViewById(R.id.login_page_toolbar);
+        if (mToolbar != null) {
+            setSupportActionBar(mToolbar);
+        }
+        getSupportActionBar().setTitle("Login");
+
         //Grab data
-        myEmail=findViewById(R.id.email_login);
-        myPassword=findViewById(R.id.pass_login);
+        myEmail=(TextInputEditText)findViewById(R.id.email_login);
+        myPassword=(TextInputEditText)findViewById(R.id.pass_login);
 
         //get firebase instance
         myAuth=FirebaseAuth.getInstance();
+
+        mRegProgress = new ProgressDialog(this);
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        FirebaseUser currentUser = myAuth.getCurrentUser();
+        if (currentUser !=null ){
+            sendToMainActivity();
+        }
+
+    }
+    private void  sendToMainActivity(){
+        Intent intent = new Intent(LoginActivity.this,main_activity.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+
 
     //Sign in button was tapped
     public void signinUser(View v){
-        loginUserWithFireBase();
+        String email = myEmail.getText().toString();
+        String password = myPassword.getText().toString();
+        if (TextUtils.isEmpty(email)||TextUtils.isEmpty(password)){
+            focusView = myPassword;
+            focusView = myEmail;
+            myPassword.setError("please enter your password");
+            myEmail.setError("please enter your email");
+            return;
+        }
+        else {
+            mRegProgress.setTitle("logging you in..");
+            mRegProgress.setMessage("please wait while we check your credentials");
+            mRegProgress.setCanceledOnTouchOutside(false);
+            mRegProgress.show();
+            loginUserWithFireBase(email,password);
+        }
+
     }
 
     //Login user with firebase
-    private void loginUserWithFireBase(){
-        String email = myEmail.getText().toString();
-        String password = myPassword.getText().toString();
-
+    private void loginUserWithFireBase(String email,String password){
         //Todo implement a check like in register activity
 
         if (email.equals("") || password.equals("")){
@@ -58,7 +108,6 @@ public class LoginActivity extends AppCompatActivity {
             myEmail.setError("please enter your email");
             return;
         }
-        Toast.makeText(this,"Loggin you in..",Toast.LENGTH_SHORT).show();
 
         myAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -66,12 +115,17 @@ public class LoginActivity extends AppCompatActivity {
                 Log.i("FINDCODE-L", "was user logged in" + task.isSuccessful());
 
                 if (!task.isSuccessful()){
-                    showErrorBox("there was a problem in loggin in");
+                    mRegProgress.hide();
+                    showErrorBox("there was a problem in loggin in!! please check your credentials");
                     Log.i("FINDCODE-L","MESSAGE : "+task.getException());
+
                 }else{
-                    Intent intent =  new Intent(LoginActivity.this,MainChatActivity.class);
-                    finish();
+
+                    mRegProgress.dismiss();
+                    Intent intent =  new Intent(LoginActivity.this,main_activity.class);
                     startActivity(intent);
+                    finish();
+
                 }
 
             }
