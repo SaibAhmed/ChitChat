@@ -18,6 +18,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW"/>
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -25,17 +26,18 @@
         <activity android:name=".RagisterActivity" />
         <activity android:name=".MainChatActivity" />
         <activity android:name=".main_activity" />
-        <activity android:name=".SettingsActivity" />
+        <activity android:name=".SettingsActivity"/>
         <activity
             android:name=".StatusActivity"
-            android:parentActivityName=".SettingsActivity" />
+            android:parentActivityName=".SettingsActivity" >
+        </activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
             android:name=".AllUsersActivity"
             android:parentActivityName=".main_activity" />
-        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".ProfileActivity"/>
     </application>
 
 </manifest>
