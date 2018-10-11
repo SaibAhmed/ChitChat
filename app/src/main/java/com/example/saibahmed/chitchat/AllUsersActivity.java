@@ -33,7 +33,7 @@ public class AllUsersActivity extends AppCompatActivity {
         mToolbar = findViewById(R.id.all_users_appBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("All Users");
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mUsersList.setHasFixedSize(true);
