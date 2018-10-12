@@ -57,16 +57,16 @@ public class main_activity extends AppCompatActivity {
 
             case R.id.menu_chats:
                 startActivity(new Intent(main_activity.this,MainChatActivity.class));
-                    finish();
+               //     finish();
                     break;
             case R.id.menu_settings:
                 startActivity(new Intent(main_activity.this,SettingsActivity.class));
-                finish();
+                  //  finish();
                     break;
 
             case R.id.menu_allUsers:
                 startActivity(new Intent(main_activity.this,AllUsersActivity.class));
-                finish();
+               // finish();
                 break;
             default:
                 break;
