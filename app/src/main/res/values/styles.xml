@@ -1,12 +1,19 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
         <!-- Customize your theme here. -->
+        //
+        <item name="textInputStyle">@style/Widget.Design.TextInputLayout</item>
         <item name="colorPrimary">#2d3436</item>
         <item name="colorPrimaryDark">#636e72</item>
-        <item name="colorAccent">#fff</item>
+        <item name="colorAccent">#000</item>
 
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>
