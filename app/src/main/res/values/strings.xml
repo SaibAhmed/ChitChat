@@ -8,5 +8,19 @@
     <string name="invalid_password">your password is too short</string>
     <string name="incorrect_password">your password is not correct</string>
     <string name="field_required">Please fill the fields</string>
+    <string name="Login_toolbar">Login</string>
+    <string name="Regsiter_toolbar">Make a new Account</string>
+    <string name="Your_username">Username</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main_activity">main_activity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_chats_fragment">Welcome to Chat Page</string>
+    <string name="hello_friends_fragment">Welcome to Friends Page</string>
+    <string name="hello_Request_fragment">Welcome to Request Page</string>
+    <string name="display_name">Display Name</string>
+    <string name="display_text">Hi there, I\'am Using ChitChat App </string>
+    <string name="Your_status">Your Status </string>
+
 
 </resources>
