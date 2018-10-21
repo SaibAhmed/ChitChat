@@ -24,6 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 
 public class ProfileActivity extends AppCompatActivity {
@@ -35,7 +36,9 @@ public class ProfileActivity extends AppCompatActivity {
     private FirebaseUser mCureent_user;
     private  String user_id;
     private Button mProfileSendReqBtn;
+    private Button mProfileDeclineReqBtn;
     private DatabaseReference mFriendDatabase;
+    private DatabaseReference mNotificationDatabase;
 //    private ProgressDialog mProgressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class ProfileActivity extends AppCompatActivity {
         mProfileStatus=(TextView)findViewById(R.id.profile_displayStatus);
         mProfileFriendsCount=(TextView)findViewById(R.id.profile_displayFriends);
         mProfileSendReqBtn = (Button)findViewById(R.id.profile_requestBtn);
+        mProfileDeclineReqBtn =(Button)findViewById(R.id.profile_declinerequestBtn);
+        mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
 
         mCurrent_state="not_friends";
 /*
@@ -85,10 +90,15 @@ public class ProfileActivity extends AppCompatActivity {
                                 mCurrent_state="req_received";
                                 mProfileSendReqBtn.setText("Accept friend Request");
 
+                                mProfileDeclineReqBtn.setVisibility(View.VISIBLE);
+                                mProfileDeclineReqBtn.setEnabled(true);
+
 
                             }else if (req_type.equals("sent")){
                                  mCurrent_state = "req_sent";
                                  mProfileSendReqBtn.setText("Cancel friend Request");
+                                 mProfileDeclineReqBtn.setVisibility(View.INVISIBLE);
+                                 mProfileDeclineReqBtn.setEnabled(false);
                             }
                         }
 
@@ -100,6 +110,9 @@ public class ProfileActivity extends AppCompatActivity {
                                     if (dataSnapshot.hasChild(user_id)){
                                         mCurrent_state="friends";
                                         mProfileSendReqBtn.setText("UnFriend this person");
+
+                                        mProfileDeclineReqBtn.setVisibility(View.INVISIBLE);
+                                        mProfileDeclineReqBtn.setEnabled(false);
                                     }
                                 }
 
@@ -145,9 +158,22 @@ public class ProfileActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void aVoid) {
 
-                                mCurrent_state="req_sent";
-                                mProfileSendReqBtn.setText("Cancel friend Request");
-                                Toast.makeText(ProfileActivity.this, "request Send", Toast.LENGTH_SHORT).show();
+                                HashMap<String,String> notificationData = new HashMap<>();
+                                notificationData.put("from",mCureent_user.getUid());
+                                notificationData.put("type","request");
+
+                                mNotificationDatabase.child(user_id).push().setValue(notificationData).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        mCurrent_state="req_sent";
+                                        mProfileSendReqBtn.setText("Cancel friend Request");
+                                        mProfileDeclineReqBtn.setVisibility(View.INVISIBLE);
+                                        mProfileDeclineReqBtn.setEnabled(false);
+                                        Toast.makeText(ProfileActivity.this, "request Send", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
                             }
                         });
                     }else {
@@ -172,6 +198,8 @@ public class ProfileActivity extends AppCompatActivity {
                             mProfileSendReqBtn.setEnabled(true);
                             mCurrent_state="not_friends";
                             mProfileSendReqBtn.setText("Send friend Request");
+                            mProfileDeclineReqBtn.setVisibility(View.INVISIBLE);
+                            mProfileDeclineReqBtn.setEnabled(false);
                             Toast.makeText(ProfileActivity.this, "Request cancel", Toast.LENGTH_SHORT).show();
                         }
                     });
@@ -203,6 +231,8 @@ public class ProfileActivity extends AppCompatActivity {
                                             mProfileSendReqBtn.setEnabled(true);
                                             mCurrent_state="friends";
                                             mProfileSendReqBtn.setText("UnFriend this person");
+                                            mProfileDeclineReqBtn.setVisibility(View.INVISIBLE);
+                                            mProfileDeclineReqBtn.setEnabled(false);
                                             Toast.makeText(ProfileActivity.this, "Request cancel", Toast.LENGTH_SHORT).show();
                                         }
                                     });
