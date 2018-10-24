@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:shape="rectangle" >
 
     <!-- View background color -->
     <solid
-        android:color="#FF6E00" >
+        android:color="#2d3436" >
     </solid>
 
     <!-- The radius makes the corners rounded -->
@@ -14,12 +15,13 @@
 
     <!--<TextView-->
         <!--android:text="hi man, how are you?"-->
-        <!--android:background="@drawable/rounded_rectangle_orange"-->
+        <!--android:background="@drawable/message_image2"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="wrap_content"-->
         <!--android:padding="8dp"-->
         <!--android:textColor="#ffffff"-->
-        <!--android:layout_marginTop="4dp"/>-->
+        <!--android:layout_marginTop="4dp"-->
+        <!--tools:ignore="ResourceCycle" />-->
 
 
 </shape>
