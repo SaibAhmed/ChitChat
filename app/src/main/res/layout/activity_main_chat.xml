@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#ecf0f1"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".MainChatActivity">
+    <include
+        layout="@layout/app_barlayout"
+        android:id="@+id/mainChat_page_toolbar"/>
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ecf0f1"
+    android:orientation="vertical">
+
 
     <ListView
         android:id="@+id/chat_list"
@@ -22,25 +30,30 @@
     </ListView>
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:id="@+id/listFooter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="bottom"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="5dp">
 
         <EditText
+            android:layout_margin="2dp"
+            android:background="@drawable/message_image"
             android:id="@+id/message_input"
-            android:layout_width="1dp"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:gravity="center"
             android:hint="Send a message"
             android:imeActionLabel="Send"
-            android:textColor="@color/black"
-            android:textColorHint="#2c3e50" />
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
 
         <ImageButton
+            android:layout_margin="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/send_button"
@@ -55,3 +68,4 @@
 
 
 </RelativeLayout>
+</LinearLayout>
