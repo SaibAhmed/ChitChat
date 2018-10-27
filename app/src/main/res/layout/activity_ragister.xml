@@ -8,6 +8,10 @@
     tools:context=".RagisterActivity"
     android:background="@drawable/registerbg">
 
+    <include
+        layout="@layout/app_barlayout"
+        android:id="@+id/Register_page_toolbar"/>
+
 
 
     <LinearLayout
