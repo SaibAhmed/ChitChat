@@ -1,8 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_allUsers"
+        android:title="All Users"/>
+
+    <item
+        android:id="@+id/menu_chats"
+        android:title="Chats" />
+
+    <item
+        android:id="@+id/menu_settings"
+        android:title="Account Settings" />
     <item
         android:id="@+id/menu_logout"
-        android:title="logout"/>
+        android:title="Logout"/>
+
+
+
+
 
 </menu>
